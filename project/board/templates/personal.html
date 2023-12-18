@@ -1,0 +1,41 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'default.html' %}
+
+{% load custom_filters %}
+
+<!-- Название у нас будет products -->
+{% block title %}
+Board
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим все товары -->
+{% block content %}
+    <center>
+
+                {# Добавляем форму, которая объединяет набор полей, которые будут отправляться в запросе #}
+        <form action="" method="get">
+            {# Переменная, которую мы передали через контекст, может сгенерировать нам форму с полями #}
+            {{ filterset.form.as_p }}
+            {# Добавим кнопку отправки данных формы #}
+            <input type="submit" value="Найти" />
+        </form>
+
+        <table>
+            <tr>
+                <td> Заголовок </td>
+                <td> Категория </td>
+                <td> Дата </td>
+                <td> Автор </td>
+            </tr>
+
+            {% for i in board %}
+            <tr>
+                <td>{{ i.title|truncatechars:15 }}</td>
+                <td>{{ i.category }}</td>
+                <td>{{ i.date_on|date:'d M Y' }}</td>
+                <td>{{ i.author }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+{% endblock content %}
