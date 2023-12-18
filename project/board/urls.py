@@ -1,6 +1,6 @@
 from django.urls import path, include
 # Импортируем созданное нами представление
-from .views import BoardList, BoardDetail, PersonalBoard, PpostCreate, PpostUpdate, PpostDelete
+from .views import BoardList, BoardDetail, PersonalBoard, PpostCreate, PpostUpdate
 
 
 urlpatterns = [
@@ -15,5 +15,5 @@ urlpatterns = [
    path('personal', PersonalBoard.as_view(), name='personalboard'),
    path('create/', PpostCreate.as_view(), name='postedit'),
    path('update/<int:pk>', PpostUpdate.as_view(), name='postupdate'),
-   path('delete/<int:pk>', PpostDelete.as_view(), name='postdelete'),
+   # path('delete/<int:pk>', PpostDelete.as_view(), name='postdelete'),
 ]

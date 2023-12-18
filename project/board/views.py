@@ -111,7 +111,7 @@ class PpostCreate(LoginRequiredMixin, CreateView):
 
 
 # Добавляем представление для изменения товара.
-class PpostUpdate(LoginRequiredMixin, CreateView):
+class PpostUpdate(LoginRequiredMixin, UpdateView):
     raise_exception = True
     form_class = PpostForm
     model = Ppost
@@ -128,9 +128,9 @@ class PpostUpdate(LoginRequiredMixin, CreateView):
     #             return redirect(f'/all')
 
 
-# Представление удаляющее товар.
-class PpostDelete(LoginRequiredMixin, CreateView):
-    raise_exception = True
-    model = Ppost
-    template_name = 'post_delete.html'
-    success_url = reverse_lazy('boardlist')
+# # Представление удаляющее товар.
+# class PpostDelete(LoginRequiredMixin, DeleteView):
+#     raise_exception = True
+#     model = Ppost
+#     template_name = 'post_delete.html'
+#     success_url = reverse_lazy('boardlist')
